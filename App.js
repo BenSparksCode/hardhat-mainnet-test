@@ -44,7 +44,7 @@ app.get('/accounts', async (req, res) => {
     })
 });
 
-app.get('/', async (req, res) => {
+app.get('/', (req, res) => {
 
     res.send("Try adding /accounts to the route...");
 });
