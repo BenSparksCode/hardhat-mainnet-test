@@ -31,7 +31,7 @@ module.exports = {
   networks: {
     hardhat: {
       forking: {
-        url: ("https://mainnet.infura.io/v3/"+alchemyKey),
+        url: ("https://eth-mainnet.alchemyapi.io/v2/"+alchemyKey),
         blockNumber: 11111111
       }
     }
