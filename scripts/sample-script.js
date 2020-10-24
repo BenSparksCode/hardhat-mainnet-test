@@ -20,6 +20,14 @@ async function main() {
   await greeter.deployed();
 
   console.log("Greeter deployed to:", greeter.address);
+
+  const block = await ethers.provider.getBlockNumber()
+
+  console.log("CURRENT BLOCK: ", block)
+
+
+
+
 }
 
 // We recommend this pattern to be able to use async/await everywhere
