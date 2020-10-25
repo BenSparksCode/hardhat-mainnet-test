@@ -4,11 +4,11 @@ const { exec } = require('child_process');
 
 const app = express();
 
-app.get('/accounts', async (req, res) => {
+app.get('/vitaliks_eth', async (req, res) => {
 
     let hardhatResults
 
-    await exec("npx hardhat accounts", (err, stdout, stderr) => {
+    await exec("npx hardhat get_vb_balance", (err, stdout, stderr) => {
         if (err) {
             console.error(`exec error: ${err}`);
             return
@@ -27,17 +27,7 @@ app.get('/accounts', async (req, res) => {
         }
 
         let outStr = "<div><h1>Hardhat Script Results:</h1>"
-
-        addresses = stdout.split("\n")
-
-        console.log(addresses);
-
-        for (let i = 0; i < addresses.length; i++) {
-            const address = addresses[i];
-            outStr += `<p>${address}</p>`
-        }
-
-        outStr += "</div>"
+        outStr += `<p>${hardhatResults}</p></div>`
 
 
         res.send(outStr);
@@ -46,7 +36,7 @@ app.get('/accounts', async (req, res) => {
 
 app.get('/', (req, res) => {
 
-    res.send("Try adding /accounts to the route...");
+    res.send("Try adding /vitaliks_eth to the route...");
 });
 
 const port = process.env.PORT || 8080;
